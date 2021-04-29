@@ -1,5 +1,5 @@
 # Dockerfile for Node-RED - pulls latest master code from git
-# Code from https://gist.github.com/dceejay/9435867
+
 # Use the node.js v14.16.1-alpine3.13
 FROM node:14.16.1-alpine3.13
 
@@ -9,6 +9,9 @@ WORKDIR /root/.node-red
  
 # download latest stable node-red
 RUN npm install -g --unsafe-perm node-red@1.2.7
+
+# add modules
+RUN npm install node-red-contrib-kafka-manager
 #RUN npm install -g --save node-red/node-red-dashboard node-red-contrib-web-worldmap node-red-node-random
 
 # use external storage for the user directory
